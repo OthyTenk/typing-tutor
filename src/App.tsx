@@ -27,10 +27,11 @@ function App() {
     <div className="app">
       <div className={`app ${isDarkMode ? 'dark' : 'light'}`}>
         <button onClick={() => setIsDarkMode(!isDarkMode)}>
-          Toggle Dark Mode
+          Toggle Theme
         </button>
         
-        <h1>Touch Typing Tutor</h1>
+        <h1>Typing Tutor</h1>
+      
       
       {!selectedLesson ? (
         // Lesson Selection Screen
