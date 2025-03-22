@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import './App.css';
-import { TypingArea } from './components/TypingArea';
-import { Lesson, TypingStats } from './types';
+import { TypingArea } from './components';
 import { lessons } from './data/lessons';
 import { useProgress } from './hooks/useProgress';
+import { Lesson, TypingStats } from './types';
 
 function App() {
   const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);

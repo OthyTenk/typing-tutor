@@ -1,5 +1,5 @@
-import { Lesson } from "../types";
-import { generatePrompt } from "../helpers/utils";
+import { Lesson } from "./types";
+import { generatePrompt } from "./helpers/utils";
 
 export const lessons: Lesson[] = [
   // Home Row
@@ -15,7 +15,7 @@ export const lessons: Lesson[] = [
     id: "top-row",
     title: "Top Row (QWERTYUIOP[])",
     keys: ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]"],
-    prompt: generatePrompt(["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]"], 25),
+    prompt: generatePrompt(["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[","]"], 25),
     row: "top",
   },
   // Bottom Row
