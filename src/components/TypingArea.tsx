@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { Lesson, TypingStats } from "../types";
+import { FC, useEffect, useState } from "react";
 import { calculateStats } from "../helpers/utils";
+import { Lesson, TypingStats } from "../types";
 import { Keyboard } from "./Keyboard";
 
 interface TypingAreaProps {
@@ -8,7 +8,7 @@ interface TypingAreaProps {
   onComplete: (stats: TypingStats) => void;
 }
 
-export const TypingArea = ({ lesson, onComplete }: TypingAreaProps) => {
+export const TypingArea:FC<TypingAreaProps> = ({ lesson, onComplete }) => {
   const [input, setInput] = useState("");
   const [startTime, setStartTime] = useState<number | null>(null);
   const [errors, setErrors] = useState(0);
