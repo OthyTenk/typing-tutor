@@ -44,7 +44,7 @@ export const TypingArea = ({ lesson, onComplete }: TypingAreaProps) => {
 
     document.addEventListener("keydown", handleKeyPress);
     return () => document.removeEventListener("keydown", handleKeyPress);
-  }, [input, startTime]);
+  }, [input, lesson.prompt, startTime]);
 
   // Check lesson completion
   useEffect(() => {
@@ -52,7 +52,7 @@ export const TypingArea = ({ lesson, onComplete }: TypingAreaProps) => {
       const stats = calculateStats(lesson.prompt.length, errors, startTime);
       onComplete(stats);
     }
-  }, [input]);
+  }, [errors, input, lesson.prompt.length, onComplete, startTime]);
 
   return (
     <div className="typing-area">

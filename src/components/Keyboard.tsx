@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Lesson } from "../types";
 
 const KEYBOARD_LAYOUT = [
@@ -12,7 +13,7 @@ interface KeyboardProps {
   errorKey: string;
 }
 
-export const Keyboard = ({ lesson, currentKey, errorKey }: KeyboardProps) => {
+export const Keyboard:FC<KeyboardProps> = ({ lesson, currentKey, errorKey }) => {
   return (
     <div className="keyboard">
       {KEYBOARD_LAYOUT.map((row, rowIndex) => (
