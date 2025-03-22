@@ -56,7 +56,7 @@ export const TypingArea:FC<TypingAreaProps> = ({ lesson, onComplete }) => {
 
   return (
     <div className="typing-area">
-      <Keyboard lesson={lesson} currentKey={currentKey} errorKey={errorKey} />
+      
       <div className="prompt">
         {lesson.prompt.split("").map((char, index) => (
           <span
@@ -70,6 +70,7 @@ export const TypingArea:FC<TypingAreaProps> = ({ lesson, onComplete }) => {
           </span>
         ))}
       </div>
+      <Keyboard lesson={lesson} currentKey={currentKey} errorKey={errorKey} />
     </div>
   );
 };
