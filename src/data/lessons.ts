@@ -5,17 +5,17 @@ export const lessons: Lesson[] = [
   // Home Row
   {
     id: "home-row",
-    title: "Home Row (ASDFJKL;)",
-    keys: ["A", "S", "D", "F", "J", "K", "L", ";"],
-    prompt: generatePrompt(["A", "S", "D", "F", "J", "K", "L", ";"], 20),
+    title: "Home Row (ASDFJKL;')",
+    keys: ["A", "S", "D", "F", "J", "K", "L", ";", "'"],
+    prompt: generatePrompt(["A", "S", "D", "F", "J", "K", "L", ";", "'"], 20),
     row: "home",
   },
   // Top Row
   {
     id: "top-row",
-    title: "Top Row (QWERTYUIOP)",
-    keys: ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-    prompt: generatePrompt(["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"], 25),
+    title: "Top Row (QWERTYUIOP[])",
+    keys: ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]"],
+    prompt: generatePrompt(["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]"], 25),
     row: "top",
   },
   // Bottom Row
