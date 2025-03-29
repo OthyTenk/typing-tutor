@@ -4,25 +4,28 @@
   flex-direction: column;
   gap: 8px;
   margin: 20px 0;
+  max-width: 640px;
+  margin: auto;
 }
 
 .row {
   display: flex;
-  gap: 4px;
-  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  /* justify-content: center; */
 }
 
 .key {
-  padding: 12px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  min-width: 40px;
+  width: 100%;
   text-align: center;
   background: #f8f9fa;
 }
 
 .space-key {
-  min-width: 390px;
+  min-width: 300px;
 }
 
 .active-lesson {
@@ -39,8 +42,6 @@
   background: #ff4444 !important;
   animation: shake 0.3s;
 }
-
-
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
@@ -69,7 +70,7 @@
 
 /* Prompt Display */
 .prompt {
-  font-size: 28px;
+  font-size: 36px;
   letter-spacing: 2px;
   margin: 40px 20px;
   text-align: center;

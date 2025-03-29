@@ -3,22 +3,44 @@ import { FC } from "react";
 interface LeftHandProps {
   nextKey: string;
 }
+
 export const RightHand: FC<LeftHandProps> = ({ nextKey }) => {
+  const renderFingerPointer = () => {
+    switch (nextKey?.toUpperCase()) {
+      case ";":
+      case "'":
+      case "]":
+      case "[":
+      case "P":
+      case "/":
+        return <div className="finger-pointer pinky" />;
+      case "L":
+      case "O":
+      case ".":
+        return <div className="finger-pointer ring" />;
+      case "K":
+      case "I":
+      case ",":
+        return <div className="finger-pointer middle" />;
+      case "J":
+      case "H":
+      case "U":
+      case "Y":
+      case "N":
+      case "M":
+        return <div className="finger-pointer index" />;
+      case " ":
+        return <div className="finger-pointer thumb" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="hand-image right-hand">
-      <img src="./public/right-hand.png" alt="Right Hand" />
+      <img src="/right-hand.png" alt="Right Hand" />
 
-      {nextKey === ";" || nextKey === "'" ? (
-        <div className="finger-pointer pinky"></div>
-      ) : nextKey === "L" ? (
-        <div className="finger-pointer ring"></div>
-      ) : nextKey === "K" ? (
-        <div className="finger-pointer middle"></div>
-      ) : nextKey === "J" ? (
-        <div className="finger-pointer index"></div>
-      ) : nextKey === " " ? (
-        <div className="finger-pointer thumb"></div>
-      ) : null}
+      {renderFingerPointer()}
     </div>
   );
 };
