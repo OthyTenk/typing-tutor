@@ -4,10 +4,11 @@ import { LeftHand } from "./LeftHand";
 import { RightHand } from "./RightHand";
 
 const KEYBOARD_LAYOUT = [
-  ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]"],
-  ["A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'"],
-  ["Z", "X", "C", "V", "B", "N", "M", ",", ".", "/"],
-  [" "],
+  ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Back"],
+  ["Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\"],
+  ["Caps", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Enter"],
+  ["Shift ", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", " Shift"],
+  ["Ctrl", "Alt", " ", "Alt", "Ctrl"],
 ];
 
 interface KeyboardProps {
