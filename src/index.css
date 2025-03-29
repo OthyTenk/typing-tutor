@@ -63,14 +63,3 @@
   color: #333;
   border-radius: 3px;
 }
-
-/* Theme Color */
-.app.dark {
-  background: #1a1a1a;
-  color: white;
-}
-
-.app.dark .key {
-  background: #333;
-  border-color: #555;
-}
