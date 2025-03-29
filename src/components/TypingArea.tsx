@@ -37,8 +37,6 @@ export const TypingArea: FC<TypingAreaProps> = ({ lesson, onComplete }) => {
       const expectedChar = lesson.prompt[input.length]?.toUpperCase();
       const typedChar = e.key.toUpperCase();
 
-      console.log(`Typed: ${typedChar}, Expected: ${expectedChar}`);
-
       if (e.key === "Backspace") {
         setInput((prev) => prev.slice(0, -1));
         setErrors((prev) => Math.max(0, prev - 1));
