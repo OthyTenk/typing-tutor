@@ -5,7 +5,8 @@ Sample basic typing tutor demo
 ![image](https://github.com/user-attachments/assets/3fe5f526-ed98-4589-aeb0-cdb505c10cd6)
 
 ## Practice Screen
-![image](https://github.com/user-attachments/assets/174ea676-dcd7-4e74-a326-ed5b20ca8f94)
+![image](https://github.com/user-attachments/assets/a600e4a1-8f46-45a4-9c08-9ab65a3d9635)
+
 
 ## Tech stack
 
