@@ -1,5 +1,7 @@
 import { FC } from "react";
 import { Lesson } from "../types";
+import { LeftHand } from "./LeftHand";
+import { RightHand } from "./RightHand";
 
 const KEYBOARD_LAYOUT = [
   ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]"],
@@ -22,25 +24,31 @@ export const Keyboard: FC<KeyboardProps> = ({
   errorKey,
 }) => {
   return (
-    <div className="keyboard">
-      {KEYBOARD_LAYOUT.map((row, rowIndex) => (
-        <div key={rowIndex} className="row">
-          {row.map((key) => (
-            <div
-              key={key}
-              className={`key 
+    <div>
+      <div className="keyboard">
+        {KEYBOARD_LAYOUT.map((row, rowIndex) => (
+          <div key={rowIndex} className="row">
+            {row.map((key) => (
+              <div
+                key={key}
+                className={`key 
                 ${lesson.keys.includes(key) ? "active-lesson" : ""}
                 ${key === currentKey ? "current-key" : ""}
                 ${key === errorKey ? "error-key" : ""}
                 ${key === expectedKey ? "expected-key" : ""}
                 ${key === " " ? "space-key" : ""}
               `}
-            >
-              {key === " " ? "Space" : key}
-            </div>
-          ))}
-        </div>
-      ))}
+              >
+                {key === " " ? "Space" : key}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="hands">
+        <LeftHand nextKey={expectedKey} />
+        <RightHand nextKey={expectedKey} />
+      </div>
     </div>
   );
 };
