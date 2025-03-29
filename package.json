@@ -1,7 +1,7 @@
 {
   "name": "typing-tutor",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,6 +9,14 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OthyTenk/typing-tutor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OthyTenk/typing-tutor/issues"
+  },
+  "homepage": "https://github.com/OthyTenk/typing-tutor#readme",
   "dependencies": {
     "@tailwindcss/vite": "^4.0.15",
     "react": "^19.0.0",
