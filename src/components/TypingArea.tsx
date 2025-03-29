@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { calculateStats } from "../helpers/utils";
 import { Lesson, TypingStats } from "../types";
 import { Keyboard } from "./Keyboard";
@@ -8,18 +8,36 @@ interface TypingAreaProps {
   onComplete: (stats: TypingStats) => void;
 }
 
-export const TypingArea:FC<TypingAreaProps> = ({ lesson, onComplete }) => {
+export const TypingArea: FC<TypingAreaProps> = ({ lesson, onComplete }) => {
   const [input, setInput] = useState("");
   const [startTime, setStartTime] = useState<number | null>(null);
   const [errors, setErrors] = useState(0);
   const [currentKey, setCurrentKey] = useState("");
   const [errorKey, setErrorKey] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    // Focus the input field when the component mounts
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+    // Prevent the default behavior of the input field
+    const handleInput = (e: KeyboardEvent) => {
+      e.preventDefault();
+    };
+    document.addEventListener("keydown", handleInput);
+    return () => {
+      document.removeEventListener("keydown", handleInput);
+    };
+  }, []);
 
   // Handle key presses
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       const expectedChar = lesson.prompt[input.length]?.toUpperCase();
       const typedChar = e.key.toUpperCase();
+
+      console.log(`Typed: ${typedChar}, Expected: ${expectedChar}`);
 
       if (e.key === "Backspace") {
         setInput((prev) => prev.slice(0, -1));
@@ -56,13 +74,25 @@ export const TypingArea:FC<TypingAreaProps> = ({ lesson, onComplete }) => {
 
   return (
     <div className="typing-area">
-      
+      <input
+        type="text"
+        ref={inputRef}
+        autoFocus
+        style={{ opacity: 1, position: "absolute" }} // Hide visually
+        onKeyDown={(e) => e.preventDefault()} // Block default input behavior
+      />
       <div className="prompt">
         {lesson.prompt.split("").map((char, index) => (
           <span
             key={index}
             className={`char 
-              ${index < input.length ? (input[index] === char ? "correct" : "incorrect") : ""}
+              ${
+                index < input.length
+                  ? input[index] === char
+                    ? "correct"
+                    : "incorrect"
+                  : ""
+              }
               ${index === input.length ? "current" : ""}
             `}
           >
