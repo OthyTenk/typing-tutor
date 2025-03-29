@@ -78,7 +78,7 @@ export const TypingArea: FC<TypingAreaProps> = ({ lesson, onComplete }) => {
         type="text"
         ref={inputRef}
         autoFocus
-        style={{ opacity: 1, position: "absolute" }} // Hide visually
+        style={{ opacity: 0, position: "absolute" }} // Hide visually
         onKeyDown={(e) => e.preventDefault()} // Block default input behavior
       />
       <div className="prompt">
@@ -100,7 +100,12 @@ export const TypingArea: FC<TypingAreaProps> = ({ lesson, onComplete }) => {
           </span>
         ))}
       </div>
-      <Keyboard lesson={lesson} currentKey={currentKey} errorKey={errorKey} />
+      <Keyboard
+        lesson={lesson}
+        currentKey={currentKey}
+        expectedKey={lesson.prompt[input.length]}
+        errorKey={errorKey}
+      />
     </div>
   );
 };

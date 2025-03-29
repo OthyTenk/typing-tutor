@@ -21,18 +21,30 @@
   background: #f8f9fa;
 }
 
+.space-key {
+  min-width: 390px;
+}
+
 .active-lesson {
-  background: #4CAF50;
+  background: #4caf4f;
   color: white;
 }
 
 .current-key {
-  background: #2196F3 !important;
+  background: #2195f391 !important;
+  transition: ease-in-out 0.3s;
 }
 
 .error-key {
   background: #ff4444 !important;
   animation: shake 0.3s;
+}
+
+.expected-key {
+  background: rgba(91, 205, 99, 0.593);
+  border-color: #ffe601;
+  transition: ease-out 0.3s;
+  color: #333;
 }
 
 @keyframes shake {
