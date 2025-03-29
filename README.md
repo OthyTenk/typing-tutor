@@ -1,7 +1,11 @@
 # Typing tutor demo
 
 Sample basic typing tutor demo
-![image](https://github.com/user-attachments/assets/d74f0ca5-8162-431f-857f-44621f10cd53)
+## Lessons
+![image](https://github.com/user-attachments/assets/3fe5f526-ed98-4589-aeb0-cdb505c10cd6)
+
+## Practice Screen
+![image](https://github.com/user-attachments/assets/174ea676-dcd7-4e74-a326-ed5b20ca8f94)
 
 ## Tech stack
 
