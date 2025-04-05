@@ -3,7 +3,7 @@ export interface Lesson {
   title: string;
   keys: string[];
   prompt: string;
-  row: "home" | "top" | "bottom" | "all";
+  row: "home" | "top" | "bottom" | "middle" | "all";
 }
 
 export interface TypingStats {
