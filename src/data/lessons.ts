@@ -102,8 +102,8 @@ export const lessons: Lesson[] = [
     row: "bottom",
   },
   {
-    id: "middle-column-complete",
-    title: "Middle Column Complete (TYGHBN)",
+    id: "middle-row-complete",
+    title: "Middle Row Complete (TYGHBN)",
     keys: ["T", "Y", "G", "H", "B", "N"],
     prompt: generatePrompt(["T", "Y", "G", "H", "B", "N"], 20),
     row: "middle",
