@@ -12,8 +12,15 @@ export const TypingArea: FC<TypingAreaProps> = ({ lesson, onComplete }) => {
   const [input, setInput] = useState("");
   const [startTime, setStartTime] = useState<number | null>(null);
   const [errors, setErrors] = useState(0);
-  const [currentKey, setCurrentKey] = useState("");
-  const [errorKey, setErrorKey] = useState("");
+  const [currentKey, setCurrentKey] = useState<{ key: string; time: number }>({
+    key: "",
+    time: 0,
+  });
+  const [errorKey, setErrorKey] = useState<{ key: string; time: number }>({
+    key: "",
+    time: 0,
+  });
+  const [isCompleted, setIsCompleted] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -21,25 +28,24 @@ export const TypingArea: FC<TypingAreaProps> = ({ lesson, onComplete }) => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
-    // Prevent the default behavior of the input field
-    const handleInput = (e: KeyboardEvent) => {
-      e.preventDefault();
+    // Prevent default scrolling for spacebar
+    const handleGlobalKey = (e: KeyboardEvent) => {
+      if (e.key === " ") e.preventDefault();
     };
-    document.addEventListener("keydown", handleInput);
-    return () => {
-      document.removeEventListener("keydown", handleInput);
-    };
+    window.addEventListener("keydown", handleGlobalKey);
+    return () => window.removeEventListener("keydown", handleGlobalKey);
   }, []);
 
   // Handle key presses
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      const expectedChar = lesson.prompt[input.length]?.toUpperCase();
-      const typedChar = e.key.toUpperCase();
+      if (isCompleted) return; // Don't process keys after completion
+
+      const expectedChar = lesson.prompt[input.length];
+      const typedChar = e.key;
 
       if (e.key === "Backspace") {
         setInput((prev) => prev.slice(0, -1));
-        setErrors((prev) => Math.max(0, prev - 1));
         return;
       }
 
@@ -47,12 +53,11 @@ export const TypingArea: FC<TypingAreaProps> = ({ lesson, onComplete }) => {
 
       if (typedChar === expectedChar) {
         setInput((prev) => prev + typedChar);
-        setCurrentKey(typedChar);
-        setErrorKey("");
+        setCurrentKey({ key: typedChar.toUpperCase(), time: Date.now() });
+        setErrorKey({ key: "", time: 0 });
       } else {
         setErrors((prev) => prev + 1);
-        setErrorKey(typedChar);
-        setTimeout(() => setErrorKey(""), 500);
+        setErrorKey({ key: typedChar.toUpperCase(), time: Date.now() });
       }
 
       if (!startTime) setStartTime(Date.now());
@@ -60,15 +65,23 @@ export const TypingArea: FC<TypingAreaProps> = ({ lesson, onComplete }) => {
 
     document.addEventListener("keydown", handleKeyPress);
     return () => document.removeEventListener("keydown", handleKeyPress);
-  }, [input, lesson.prompt, startTime]);
+  }, [input, lesson.prompt, startTime, isCompleted]);
 
   // Check lesson completion
   useEffect(() => {
-    if (input.length === lesson.prompt.length && startTime) {
+    if (input.length === lesson.prompt.length && startTime && !isCompleted) {
+      setIsCompleted(true);
       const stats = calculateStats(lesson.prompt.length, errors, startTime);
       onComplete(stats);
     }
-  }, [errors, input, lesson.prompt.length, onComplete, startTime]);
+  }, [
+    input.length,
+    lesson.prompt.length,
+    startTime,
+    isCompleted,
+    errors,
+    onComplete,
+  ]);
 
   return (
     <div className="typing-area">
