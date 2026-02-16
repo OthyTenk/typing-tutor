@@ -33,7 +33,7 @@ export const Keyboard: FC<KeyboardProps> = ({
       <div className="keyboard">
         {KEYBOARD_LAYOUT.map((row, rowIndex) => (
           <div key={rowIndex} className="row">
-            {row.map((key) => {
+            {row.map((key, keyIndex) => {
               const normKey = key.toUpperCase();
               const isCurrent = normKey === currentKey.key;
               const isError = normKey === errorKey.key;
@@ -50,7 +50,7 @@ export const Keyboard: FC<KeyboardProps> = ({
 
               return (
                 <div
-                  key={`${key}-${isCurrent ? currentKey.time : ""}-${isError ? errorKey.time : ""}`}
+                  key={`${key}-${keyIndex}-${isCurrent ? currentKey.time : ""}-${isError ? errorKey.time : ""}`}
                   className={`key 
                   ${lesson.keys.includes(key) ? "active-lesson" : ""}
                   ${isCurrent ? "current-key" : ""}
@@ -59,7 +59,13 @@ export const Keyboard: FC<KeyboardProps> = ({
                   ${key === " " ? "space-key" : ""}
                 `}
                 >
-                  {key === " " ? "Space" : key}
+                  {key.trim() === "Ctrl" ||
+                  key.trim() === "Alt" ||
+                  key.trim() === "Shift"
+                    ? key.trim()
+                    : key === " "
+                      ? "Space"
+                      : key}
                 </div>
               );
             })}

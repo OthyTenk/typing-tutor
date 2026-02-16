@@ -587,7 +587,6 @@ button {
   background: rgba(244, 67, 54, 0.2);
 }
 
-/* Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -603,4 +602,632 @@ button {
 
 .app.dark ::-webkit-scrollbar-thumb {
   background: var(--border-dark);
+}
+
+/* ===== PHASE 3: NEW FEATURES ===== */
+
+/* Header Actions */
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn-icon {
+  padding: 0.6rem;
+  min-width: 44px;
+  font-size: 1.25rem;
+  background: transparent;
+  border: 1px solid var(--border-light);
+}
+
+.app.dark .btn-icon {
+  border-color: var(--border-dark);
+}
+
+.btn-icon:hover {
+  background: var(--card-light);
+  transform: scale(1.05);
+}
+
+.app.dark .btn-icon:hover {
+  background: var(--card-dark);
+}
+
+/* Lesson Controls */
+.lesson-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.custom-lesson-count {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Custom Lesson Card */
+.lesson-card.custom-lesson {
+  border-color: var(--warning);
+  position: relative;
+}
+
+.lesson-card.custom-lesson:hover {
+  border-color: var(--warning);
+  box-shadow: 0 12px 24px -10px hsla(48, 96%, 53%, 0.3);
+}
+
+.custom-badge {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.btn-delete {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.4rem;
+  font-size: 1.1rem;
+  background: var(--error);
+  border: none;
+  border-radius: 6px;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.lesson-card:hover .btn-delete {
+  opacity: 1;
+}
+
+.btn-delete:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Practice Mode Selector */
+.practice-mode-selector {
+  margin-bottom: 2rem;
+}
+
+.practice-mode-selector h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.mode-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.mode-button {
+  padding: 0.75rem 1.25rem;
+  background: var(--card-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.app.dark .mode-button {
+  background: var(--card-dark);
+  border-color: var(--border-dark);
+}
+
+.mode-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+.mode-button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.mode-icon {
+  font-size: 1.25rem;
+}
+
+.mode-label {
+  font-weight: 600;
+}
+
+/* Timer Display (Timed Mode) */
+.timer-display {
+  position: fixed;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  background: var(--card-light);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 8px 20px -8px var(--primary-glow);
+  z-index: 100;
+}
+
+.app.dark .timer-display {
+  background: var(--card-dark);
+}
+
+.timer-icon {
+  font-size: 2rem;
+}
+
+.timer-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--primary);
+}
+
+/* Race Progress Bar */
+.race-progress {
+  height: 8px;
+  background: var(--border-light);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.app.dark .race-progress {
+  background: var(--border-dark);
+}
+
+.race-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--success));
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* Modal Styles */
+.modal {
+  background: var(--card-light);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25);
+  animation: slideIn 0.3s ease-out;
+}
+
+.app.dark .modal {
+  background: var(--card-dark);
+  border-color: var(--border-dark);
+}
+
+.modal-header {
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+/* Achievements Modal */
+.achievements-progress {
+  font-size: 1rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.achievements-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.achievement-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.app.dark .achievement-card {
+  background: hsl(222, 47%, 18%);
+  border-color: var(--border-dark);
+}
+
+.achievement-card.unlocked {
+  border-color: var(--success);
+}
+
+.achievement-card.locked {
+  opacity: 0.5;
+}
+
+.achievement-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.achievement-content {
+  flex: 1;
+}
+
+.achievement-content h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.achievement-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.unlocked-date {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.achievement-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 28px;
+  height: 28px;
+  background: var(--success);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Achievement Toast */
+.achievement-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--card-light);
+  border: 2px solid var(--success);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
+  max-width: 350px;
+  z-index: 2000;
+  animation: slideInRight 0.4s ease-out;
+}
+
+.app.dark .achievement-toast {
+  background: var(--card-dark);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.toast-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.toast-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--success);
+}
+
+.toast-achievement {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.toast-achievement p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.toast-description {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.toast-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.toast-close:hover {
+  opacity: 1;
+}
+
+/* Settings Modal */
+.settings-modal {
+  max-width: 500px;
+}
+
+.settings-group {
+  margin-bottom: 2rem;
+}
+
+.settings-group h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.app.dark .settings-group h3 {
+  border-color: var(--border-dark);
+}
+
+.setting-item {
+  margin-bottom: 1.25rem;
+}
+
+.setting-item label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.setting-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.setting-item input[type="range"] {
+  flex: 1;
+  cursor: pointer;
+}
+
+.setting-item select {
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-light);
+  background: var(--bg-light);
+  color: var(--text-light);
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+.app.dark .setting-item select {
+  border-color: var(--border-dark);
+  background: hsl(222, 47%, 18%);
+  color: var(--text-dark);
+}
+
+.volume-display {
+  min-width: 45px;
+  text-align: right;
+  font-weight: 600;
+}
+
+/* Custom Lesson Builder */
+.custom-lesson-modal {
+  max-width: 550px;
+}
+
+.custom-lesson-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-light);
+  background: var(--bg-light);
+  color: var(--text-light);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+}
+
+.app.dark .form-group input,
+.app.dark .form-group textarea {
+  border-color: var(--border-dark);
+  background: hsl(222, 47%, 18%);
+  color: var(--text-dark);
+}
+
+.form-group textarea {
+  resize: vertical;
+  font-family: var(--font-mono);
+}
+
+.char-count {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  text-align: right;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.25rem;
+  }
+
+  .header-actions {
+    gap: 0.25rem;
+  }
+
+  .btn-icon {
+    padding: 0.5rem;
+    min-width: 40px;
+    font-size: 1rem;
+  }
+
+  .lesson-list,
+  .practice-screen {
+    padding: 1rem;
+  }
+
+  .lessons-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .lesson-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mode-buttons {
+    justify-content: center;
+  }
+
+  .mode-button {
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
+  }
+
+  .prompt {
+    padding: 1.5rem;
+    font-size: 1.75rem;
+  }
+
+  .keyboard {
+    padding: 0.5rem;
+    gap: 4px;
+  }
+
+  .key {
+    height: 40px;
+    min-width: 40px;
+    font-size: 0.85rem;
+  }
+
+  .key.space-key {
+    min-width: 200px;
+  }
+
+  .hands {
+    gap: 50px;
+    flex-wrap: wrap;
+  }
+
+  .hand-image img {
+    max-width: 150px;
+  }
+
+  .timer-display {
+    position: static;
+    transform: none;
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+
+  .timer-value {
+    font-size: 2rem;
+  }
+
+  .achievement-toast {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+  }
+
+  .modal {
+    padding: 1.5rem;
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-item .value {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .prompt {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+
+  .keyboard {
+    transform: scale(0.85);
+    transform-origin: top center;
+  }
+
+  .achievement-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .achievement-icon {
+    font-size: 3rem;
+  }
 }
