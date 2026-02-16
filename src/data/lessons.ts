@@ -30,7 +30,7 @@ export const lessons: Lesson[] = [
     keys: ["A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'"],
     prompt: generatePrompt(
       ["A", "S", "D", "G", "H", "F", "J", "K", "L", ";", "'"],
-      20
+      20,
     ),
     row: "home",
   },
@@ -55,7 +55,7 @@ export const lessons: Lesson[] = [
     keys: ["Q", "W", "E", "R", "U", "I", "O", "P", "[", "]"],
     prompt: generatePrompt(
       ["Q", "W", "E", "R", "U", "I", "O", "P", "[", "]"],
-      25
+      25,
     ),
     row: "top",
   },
@@ -65,7 +65,7 @@ export const lessons: Lesson[] = [
     keys: ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]"],
     prompt: generatePrompt(
       ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]"],
-      25
+      25,
     ),
     row: "top",
   },
@@ -97,7 +97,7 @@ export const lessons: Lesson[] = [
     keys: ["Z", "X", "C", "V", "B", "N", "M", ",", ".", "/"],
     prompt: generatePrompt(
       ["Z", "X", "C", "V", "B", "N", "M", ",", ".", "/"],
-      25
+      25,
     ),
     row: "bottom",
   },
@@ -107,5 +107,74 @@ export const lessons: Lesson[] = [
     keys: ["T", "Y", "G", "H", "B", "N"],
     prompt: generatePrompt(["T", "Y", "G", "H", "B", "N"], 20),
     row: "middle",
+    minWpm: 20,
+    minAccuracy: 90,
+  },
+  // Number Row
+  {
+    id: "number-row-right",
+    title: "Number Row Right (67890)",
+    keys: ["6", "7", "8", "9", "0"],
+    prompt: generatePrompt(["6", "7", "8", "9", "0"], 20),
+    row: "number",
+    minWpm: 20,
+    minAccuracy: 90,
+  },
+  {
+    id: "number-row-left",
+    title: "Number Row Left (12345)",
+    keys: ["1", "2", "3", "4", "5"],
+    prompt: generatePrompt(["1", "2", "3", "4", "5"], 20),
+    row: "number",
+    minWpm: 20,
+    minAccuracy: 90,
+  },
+  {
+    id: "number-row-complete",
+    title: "Number Row Complete (1234567890)",
+    keys: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+    prompt: generatePrompt(
+      ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+      25,
+    ),
+    row: "number",
+    minWpm: 25,
+    minAccuracy: 90,
+  },
+  // Symbols
+  {
+    id: "symbols-basic",
+    title: "Symbols Basic (!@#$%^&*())",
+    keys: ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"],
+    prompt: generatePrompt(
+      ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"],
+      25,
+    ),
+    row: "symbol",
+    minWpm: 15,
+    minAccuracy: 85,
+  },
+  // All Keys
+  {
+    id: "all-keys",
+    title: "All Keys Practice",
+    keys: [
+      ..."abcdefghijklmnopqrstuvwxyz".split(""),
+      ..."ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
+      ..."1234567890".split(""),
+      ..."!@#$%^&*()".split(""),
+    ],
+    prompt: generatePrompt(
+      [
+        ..."abcdefghijklmnopqrstuvwxyz".split(""),
+        ..."ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
+        ..."1234567890".split(""),
+        ..."!@#$%^&*()".split(""),
+      ],
+      50,
+    ),
+    row: "all",
+    minWpm: 30,
+    minAccuracy: 95,
   },
 ];

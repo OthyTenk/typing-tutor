@@ -5,3 +5,5 @@ export * from "./LessonCard";
 export * from "./PracticeHeader";
 export * from "./LeftHand";
 export * from "./RightHand";
+export * from "./ResultsModal";
+export * from "./StatsDashboard";

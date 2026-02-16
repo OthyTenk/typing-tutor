@@ -3,7 +3,9 @@ export interface Lesson {
   title: string;
   keys: string[];
   prompt: string;
-  row: "home" | "top" | "bottom" | "middle" | "all";
+  row: "home" | "top" | "bottom" | "middle" | "number" | "symbol" | "all";
+  minWpm?: number;
+  minAccuracy?: number;
 }
 
 export interface TypingStats {
@@ -11,4 +13,10 @@ export interface TypingStats {
   accuracy: number;
   errors: number;
   progress: number;
+}
+
+export interface HandInfo {
+  hand: "left" | "right" | "both" | null;
+  requiresShift: boolean;
+  shiftHand: "left" | "right";
 }
