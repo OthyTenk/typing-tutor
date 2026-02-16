@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import {
   AppHeader,
@@ -16,10 +16,10 @@ function App() {
   const { saveProgress } = useProgress();
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  useState(() => {
+  useEffect(() => {
     const savedProgress = localStorage.getItem("typing-progress");
     if (savedProgress) setStats(JSON.parse(savedProgress));
-  });
+  }, []);
 
   const handleLessonComplete = (lesson: Lesson, newStats: TypingStats) => {
     setStats((prev) => ({ ...prev, [lesson.id]: newStats }));
@@ -28,39 +28,37 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <div className={`app ${isDarkMode ? "dark" : "light"}`}>
-        <AppHeader onToggleTheme={() => setIsDarkMode((prev) => !prev)} />
+    <div className={`app ${isDarkMode ? "dark" : "light"}`}>
+      <AppHeader onToggleTheme={() => setIsDarkMode((prev) => !prev)} />
 
-        {!selectedLesson ? (
-          // Lesson Selection Screen
-          <div className="lesson-list">
-            {lessons.map((lesson) => (
-              <LessonCard
-                key={lesson.id}
-                title={lesson.title}
-                progress={stats[lesson.id]?.progress || 0}
-                onSelectedLesson={() => setSelectedLesson(lesson)}
-              />
-            ))}
-          </div>
-        ) : (
-          // Typing Practice Screen
-          <div className="practice-screen">
-            <PracticeHeader
-              title={selectedLesson.title}
-              handleButtonAction={() => setSelectedLesson(null)}
+      {!selectedLesson ? (
+        // Lesson Selection Screen
+        <div className="lesson-list">
+          {lessons.map((lesson) => (
+            <LessonCard
+              key={lesson.id}
+              title={lesson.title}
+              progress={stats[lesson.id]?.progress || 0}
+              onSelectedLesson={() => setSelectedLesson(lesson)}
             />
+          ))}
+        </div>
+      ) : (
+        // Typing Practice Screen
+        <div className="practice-screen">
+          <PracticeHeader
+            title={selectedLesson.title}
+            handleButtonAction={() => setSelectedLesson(null)}
+          />
 
-            <TypingArea
-              lesson={selectedLesson}
-              onComplete={(newStats) =>
-                handleLessonComplete(selectedLesson, newStats)
-              }
-            />
-          </div>
-        )}
-      </div>
+          <TypingArea
+            lesson={selectedLesson}
+            onComplete={(newStats) =>
+              handleLessonComplete(selectedLesson, newStats)
+            }
+          />
+        </div>
+      )}
     </div>
   );
 }
