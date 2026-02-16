@@ -1,10 +1,10 @@
 import { FC } from "react";
 
-interface LeftHandProps {
+interface RightHandProps {
   nextKey: string;
 }
 
-export const RightHand: FC<LeftHandProps> = ({ nextKey }) => {
+export const RightHand: FC<RightHandProps> = ({ nextKey }) => {
   const renderFingerPointer = () => {
     switch (nextKey?.toUpperCase()) {
       case ";":

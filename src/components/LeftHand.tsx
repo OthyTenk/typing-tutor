@@ -26,7 +26,7 @@ export const LeftHand: FC<LeftHandProps> = ({ nextKey }) => {
       case "V":
       case "B":
         return <div className="finger-pointer index" />;
-      case "space":
+      case " ":
         return <div className="finger-pointer thumb" />;
       default:
         return null;
